@@ -35,7 +35,7 @@ That's it — no database to configure. Tournament data lives in
 
 ## 2. Admin login
 
-Default admin password: **`smashkart2026`**
+Default admin password: **``**
 
 Change it any time by editing `"adminPassword"` in
 `server/data/tournament.json` (restart the server after editing).
