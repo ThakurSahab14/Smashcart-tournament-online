@@ -1,0 +1,50 @@
+{
+  "adminPassword": "smashkart2026",
+  "mode": "solo",
+  "prizePool": 3000,
+  "soloSplit": {
+    "champion": 50,
+    "second": 30,
+    "third": 20
+  },
+  "players": [
+    {
+      "id": "kk835i63",
+      "name": "dsdsdsd"
+    },
+    {
+      "id": "nhlf3fjb",
+      "name": "dsdsdsdsdsfsf"
+    }
+  ],
+  "teams": [
+    {
+      "id": "8qx890ee",
+      "name": "smashers",
+      "captain": "gaurav",
+      "members": [
+        {
+          "id": "azeccu2h",
+          "name": "aanchal"
+        }
+      ]
+    },
+    {
+      "id": "iq2kemec",
+      "name": "strikers",
+      "captain": "vikranmt",
+      "members": [
+        {
+          "id": "eeizojmz",
+          "name": "parth"
+        }
+      ]
+    }
+  ],
+  "matches": [],
+  "liveAnnouncement": null,
+  "joinLinks": {
+    "solo": "",
+    "team": "https://smashkarts.io/link/?mode=67109640&wpns=159212&room=in227478&arena=skyarena-pinball&mdfrs=0"
+  }
+}
