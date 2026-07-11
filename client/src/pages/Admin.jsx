@@ -35,6 +35,66 @@ function Field({ label, children }) {
 const inputClass =
   "w-full rounded-lg border border-white/10 bg-asphalt px-3 py-2 text-sm text-white outline-none focus:border-volt";
 
+function RegistrationsSection({ token }) {
+  const [registrations, setRegistrations] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchRegistrations() {
+      try {
+        const res = await fetch("http://localhost:4000/api/registrations", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setRegistrations(data);
+        }
+      } catch (e) {
+        console.error("Failed to fetch registrations:", e);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchRegistrations();
+  }, [token]);
+
+  return (
+    <Section title="Registrations" subtitle="Players who registered via the form">
+      {loading ? (
+        <p className="text-white/40">Loading...</p>
+      ) : registrations.length === 0 ? (
+        <p className="text-white/40">No registrations yet</p>
+      ) : (
+        <div className="max-h-80 overflow-auto">
+          <table className="w-full text-sm">
+            <thead className="sticky top-0 bg-asphalt-light text-left text-white/60">
+              <tr>
+                <th className="pb-2 pr-4">Name</th>
+                <th className="pb-2 pr-4">IGN</th>
+                <th className="pb-2 pr-4">Mobile</th>
+                <th className="pb-2">Discord</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {registrations.map((r) => (
+                <tr key={r.id} className="text-white/70">
+                  <td className="py-2 pr-4">{r.name}</td>
+                  <td className="py-2 pr-4 text-volt">{r.ign}</td>
+                  <td className="py-2 pr-4">{r.mobile}</td>
+                  <td className="py-2">{r.discord || "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <p className="mt-3 text-xs text-white/40">
+        Total: {registrations.length} registration{registrations.length !== 1 ? "s" : ""}
+      </p>
+    </Section>
+  );
+}
+
 export default function Admin() {
   const { token, isAdmin } = useAuth();
   const { state } = useTournament();
@@ -454,6 +514,9 @@ export default function Admin() {
           </button>
         </div>
       </Section>
+
+      {/* Registrations Section */}
+      <RegistrationsSection token={token} />
     </main>
   );
 }

@@ -9,13 +9,14 @@ import { Server } from "socket.io";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_FILE = path.join(__dirname, "data", "tournament.json");
+const REGISTRATIONS_FILE = path.join(__dirname, "data", "registrations.json");
 const JWT_SECRET =
   process.env.JWT_SECRET || "smashkart-local-secret-change-me";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const PORT = process.env.PORT || 4000;
 
-// ---------- tiny JSON "database" ----------
+// ---------- tiny JSON "database" ---------
 function readState() {
   const state = JSON.parse(fs.readFileSync(DATA_FILE, "utf-8"));
   if (!state.joinLinks) state.joinLinks = { solo: "", team: "" };
@@ -63,6 +64,42 @@ if (password && password === ADMIN_PASSWORD) {    const token = jwt.sign({ role:
     return res.json({ token });
   }
   return res.status(401).json({ error: "Incorrect password" });
+});
+
+// ---------- registration ----------
+app.post("/api/register", (req, res) => {
+  const { name, ign, mobile, discord } = req.body;
+
+  if (!name || !ign || !mobile) {
+    return res.status(400).json({ error: "Name, IGN and mobile are required" });
+  }
+
+  const timestamp = new Date().toISOString();
+  const registrationData = { id: uid(), name, ign, mobile, discord: discord || "", timestamp };
+
+  // Save to local JSON file
+  let registrations = [];
+  if (fs.existsSync(REGISTRATIONS_FILE)) {
+    registrations = JSON.parse(fs.readFileSync(REGISTRATIONS_FILE, "utf-8"));
+  }
+  registrations.push(registrationData);
+  fs.writeFileSync(REGISTRATIONS_FILE, JSON.stringify(registrations, null, 2));
+
+  console.log("New registration:", registrationData);
+
+  // Broadcast to all clients (for live updates)
+  io.emit("registration:new", registrationData);
+
+  res.json({ ok: true, message: "Registration successful!" });
+});
+
+// Get all registrations (admin only)
+app.get("/api/registrations", requireAdmin, (req, res) => {
+  let registrations = [];
+  if (fs.existsSync(REGISTRATIONS_FILE)) {
+    registrations = JSON.parse(fs.readFileSync(REGISTRATIONS_FILE, "utf-8"));
+  }
+  res.json(registrations);
 });
 
 // ---------- public read ----------
