@@ -9,7 +9,10 @@ import { Server } from "socket.io";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_FILE = path.join(__dirname, "data", "tournament.json");
-const JWT_SECRET = "smashkart-local-secret-change-me";
+const JWT_SECRET =
+  process.env.JWT_SECRET || "smashkart-local-secret-change-me";
+
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 const PORT = process.env.PORT || 4000;
 
 // ---------- tiny JSON "database" ----------
@@ -56,9 +59,7 @@ function requireAdmin(req, res, next) {
 
 app.post("/api/login", (req, res) => {
   const { password } = req.body;
-  const state = readState();
-  if (password && password === state.adminPassword) {
-    const token = jwt.sign({ role: "admin" }, JWT_SECRET, { expiresIn: "12h" });
+if (password && password === ADMIN_PASSWORD) {    const token = jwt.sign({ role: "admin" }, JWT_SECRET, { expiresIn: "24h" });
     return res.json({ token });
   }
   return res.status(401).json({ error: "Incorrect password" });
