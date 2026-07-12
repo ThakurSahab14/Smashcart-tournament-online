@@ -1,4 +1,4 @@
-# 🏎️ BrowserStack SmashKart Tournament
+# 🏎️  SmashKart Tournament
 
 A live, animated tournament site for SmashKart race nights — admins run the
 grid in real time, everyone else watches a live leaderboard, confetti, and
