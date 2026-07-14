@@ -33,13 +33,13 @@ export default function PastResults() {
         </p>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="flex flex-wrap justify-center gap-6">
         {soloMatch && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-2xl border border-white/10 bg-asphalt-light p-6"
+            className="w-full max-w-sm rounded-2xl border border-white/10 bg-asphalt-light p-6"
           >
             <span className="font-mono text-xs uppercase tracking-widest text-volt">
               Solo · {new Date(soloMatch.timestamp).toLocaleDateString("en-IN", {
@@ -67,7 +67,7 @@ export default function PastResults() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.08 }}
-            className="rounded-2xl border border-white/10 bg-asphalt-light p-6"
+            className="w-full max-w-sm rounded-2xl border border-white/10 bg-asphalt-light p-6"
           >
             <span className="font-mono text-xs uppercase tracking-widest text-surge">
               Team · {new Date(teamMatch.timestamp).toLocaleDateString("en-IN", {

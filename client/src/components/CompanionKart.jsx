@@ -68,9 +68,8 @@ export default function CompanionKart() {
     "Tu tou Kart tod dega! 🏎️",
   ];
 
-  // Stay on the last message once reached
-  const currentMessage =
-    messages[Math.min(clickCount, messages.length - 1)];
+  // Loop through messages - start from beginning when reaching the end
+  const currentMessage = messages[clickCount % messages.length];
 
   useEffect(() => {
     const unsubscribe = tilt.on("change", (v) => {

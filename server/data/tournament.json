@@ -1,5 +1,5 @@
 {
-  "mode": "solo",
+  "mode": "team",
   "prizePool": 3000,
   "soloSplit": {
     "champion": 50,
@@ -25,6 +25,10 @@
         {
           "id": "azeccu2h",
           "name": "aanchal"
+        },
+        {
+          "id": "w6kkumw1",
+          "name": "dsdsd"
         }
       ]
     },
@@ -36,12 +40,70 @@
         {
           "id": "eeizojmz",
           "name": "parth"
+        },
+        {
+          "id": "bw8y4zod",
+          "name": "dsdsd"
         }
       ]
     }
   ],
-  "matches": [],
-  "liveAnnouncement": null,
+  "matches": [
+    {
+      "id": "mnmsuizq",
+      "mode": "team",
+      "prizePool": 3000,
+      "results": [
+        {
+          "place": 1,
+          "name": "smashers",
+          "teamId": "8qx890ee"
+        }
+      ],
+      "payouts": [
+        {
+          "place": 1,
+          "name": "smashers",
+          "teamId": "8qx890ee",
+          "captain": "gaurav",
+          "members": [
+            "aanchal",
+            "dsdsd"
+          ],
+          "amount": 3000,
+          "note": "Distributed by team captain"
+        }
+      ],
+      "timestamp": "2026-07-14T16:12:31.577Z"
+    }
+  ],
+  "liveAnnouncement": {
+    "id": "mnmsuizq",
+    "mode": "team",
+    "prizePool": 3000,
+    "results": [
+      {
+        "place": 1,
+        "name": "smashers",
+        "teamId": "8qx890ee"
+      }
+    ],
+    "payouts": [
+      {
+        "place": 1,
+        "name": "smashers",
+        "teamId": "8qx890ee",
+        "captain": "gaurav",
+        "members": [
+          "aanchal",
+          "dsdsd"
+        ],
+        "amount": 3000,
+        "note": "Distributed by team captain"
+      }
+    ],
+    "timestamp": "2026-07-14T16:12:31.577Z"
+  },
   "joinLinks": {
     "solo": "",
     "team": "https://smashkarts.io/link/?mode=67109640&wpns=159212&room=in227478&arena=skyarena-pinball&mdfrs=0"
