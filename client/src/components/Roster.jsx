@@ -63,8 +63,11 @@ hover:shadow-[0_0_30px_rgba(0,229,255,.25)]
     #{i + 1}
   </span>
 
-  <span className="text-white">
+  <span className="text-white group-hover:text-transparent group-hover:absolute">
     {p.name}
+  </span>
+  <span className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-[60px] opacity-0 transition-all duration-300 group-hover:translate-x-[calc(100%-50px)] group-hover:opacity-100 text-purple-400 font-bold">
+    {p.ign}
   </span>
 </>              </motion.span>
             ))}
@@ -108,9 +111,14 @@ hover:shadow-[0_0_30px_rgba(0,229,255,.25)]
                   team.members.map((m) => (
                     <li
                       key={m.id}
-                      className="flex items-center gap-2 rounded-xl border border-white/5 bg-white/5 px-3 py-2 text-sm text-white/80 transition-all duration-300 hover:border-cyan-400/20 hover:bg-cyan-400/10 hover:text-cyan-300"
+                      className="group/member relative flex items-center gap-2 rounded-xl border border-white/5 bg-white/5 px-3 py-2 text-sm text-white/80 transition-all duration-300 hover:border-cyan-400/20 hover:bg-cyan-400/10"
                     >
-                      ⚡ {m.name}
+                      <span className="transition-colors duration-300 group-hover/member:text-cyan-300">
+                        ⚡ {m.name}
+                      </span>
+                      <span className="absolute right-3 font-mono text-xs text-purple-400 opacity-0 transition-all duration-300 group-hover/member:opacity-100 group-hover/member:text-purple-300">
+                        {m.ign}
+                      </span>
                     </li>
                   ))
                 ) : (
