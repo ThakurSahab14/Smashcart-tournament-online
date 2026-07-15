@@ -111,17 +111,27 @@ export default function Admin() {
   const [results, setResults] = useState({ 1: "", 2: "", 3: "" });
   const [winningTeam, setWinningTeam] = useState("");
 
+  // Fetch fresh state from server when admin panel opens
+  const [freshState, setFreshState] = useState(null);
+
   useEffect(() => {
-    if (state) {
-      setPrizePool(state.prizePool);
-      setSplit(state.soloSplit);
-      setSoloLink(state.joinLinks?.solo || "");
-      setTeamLink(state.joinLinks?.team || "");
+    api.getState().then(setFreshState).catch(() => {});
+  }, []);
+
+  // Use fresh state if available, otherwise fall back to context state
+  const currentState = freshState || state;
+
+  useEffect(() => {
+    if (currentState) {
+      setPrizePool(currentState.prizePool);
+      setSplit(currentState.soloSplit);
+      setSoloLink(currentState.joinLinks?.solo || "");
+      setTeamLink(currentState.joinLinks?.team || "");
     }
-  }, [state?.prizePool, state?.soloSplit, state?.joinLinks]);
+  }, [currentState]);
 
   if (!isAdmin) return <Navigate to="/admin/login" replace />;
-  if (!state) return <p className="p-10 text-center text-white/40">Loading race control…</p>;
+  if (!currentState) return <p className="p-10 text-center text-white/40">Loading race control…</p>;
 
   function flash(msg) {
     setNotice(msg);
@@ -199,7 +209,7 @@ export default function Admin() {
 
   async function handleDeclareTeam(e) {
     e.preventDefault();
-    const team = state.teams.find((t) => t.id === winningTeam);
+    const team = currentState.teams.find((t) => t.id === winningTeam);
     if (!team) return flash("Pick the winning team");
     try {
       await api.submitResult([{ place: 1, name: team.name, teamId: team.id }], token);
@@ -221,7 +231,7 @@ export default function Admin() {
     }
   }
 
-  const isSolo = state.mode === "solo";
+  const isSolo = currentState.mode === "solo";
 
   return (
     <main className="mx-auto max-w-4xl space-y-6 px-5 py-10">
@@ -249,7 +259,7 @@ export default function Admin() {
               key={m}
               onClick={() => handleModeChange(m)}
               className={`rounded-full px-5 py-2 font-display text-sm font-bold uppercase tracking-wide transition ${
-                state.mode === m
+                currentState.mode === m
                   ? "bg-volt text-asphalt"
                   : "border border-white/15 text-white/70 hover:text-white"
               }`}
@@ -356,7 +366,7 @@ export default function Admin() {
             </button>
           </form>
           <div className="mt-4 flex flex-wrap gap-2">
-            {state.players.map((p) => (
+            {currentState.players.map((p) => (
               <span
                 key={p.id}
                 className="flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-sm"
@@ -393,7 +403,7 @@ export default function Admin() {
           </form>
 
           <div className="mt-5 space-y-4">
-            {state.teams.map((team) => (
+            {currentState.teams.map((team) => (
               <div key={team.id} className="rounded-xl border border-white/10 p-4">
                 <div className="flex items-center justify-between">
                   <div>
@@ -460,7 +470,7 @@ export default function Admin() {
                   className={inputClass}
                 >
                   <option value="">Select racer</option>
-                  {state.players.map((p) => (
+                  {currentState.players.map((p) => (
                     <option key={p.id} value={p.name}>
                       {p.name}
                     </option>
@@ -481,7 +491,7 @@ export default function Admin() {
                 className={inputClass}
               >
                 <option value="">Select team</option>
-                {state.teams.map((t) => (
+                {currentState.teams.map((t) => (
                   <option key={t.id} value={t.id}>
                     {t.name}
                   </option>
