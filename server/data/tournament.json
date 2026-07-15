@@ -1,111 +1,48 @@
 {
   "mode": "team",
-  "prizePool": 3000,
+  "prizePool": 2000,
   "soloSplit": {
     "champion": 50,
     "second": 30,
     "third": 20
   },
   "players": [
-    {
-      "id": "kk835i63",
-      "name": "dsdsdsd"
-    },
-    {
-      "id": "nhlf3fjb",
-      "name": "dsdsdsdsdsfsf"
-    }
+    { "id": "pl001", "name": "Lance", "ign": "LightningRex" },
+    { "id": "pl002", "name": "Devendra", "ign": "Ohyaa" },
+    { "id": "pl003", "name": "Abhishek", "ign": "Infinityrush" },
+    { "id": "pl004", "name": "Varad", "ign": "Kaka" },
+    { "id": "pl005", "name": "Vikrant", "ign": "MBaapu" },
+    { "id": "pl006", "name": "Gaurav", "ign": "nhihorhakyamc" },
+    { "id": "pl007", "name": "Aanchal", "ign": "Basanti" },
+    { "id": "pl008", "name": "Parth", "ign": "AajaTeriMaartaHu" }
   ],
   "teams": [
     {
-      "id": "8qx890ee",
-      "name": "smashers",
-      "captain": "gaurav",
+      "id": "tm001",
+      "name": "Thunder Gladiators",
+      "captain": "Abhishek",
       "members": [
-        {
-          "id": "azeccu2h",
-          "name": "aanchal"
-        },
-        {
-          "id": "w6kkumw1",
-          "name": "dsdsd"
-        }
+        { "id": "mb001", "name": "Lance", "ign": "LightningRex" },
+        { "id": "mb002", "name": "Devendra", "ign": "Ohyaa" },
+        { "id": "mb003", "name": "Abhishek", "ign": "Infinityrush" },
+        { "id": "mb004", "name": "Varad", "ign": "Kaka" }
       ]
     },
     {
-      "id": "iq2kemec",
-      "name": "strikers",
-      "captain": "vikranmt",
+      "id": "tm002",
+      "name": "Babita Strikers",
+      "captain": "Vikrant",
       "members": [
-        {
-          "id": "eeizojmz",
-          "name": "parth"
-        },
-        {
-          "id": "bw8y4zod",
-          "name": "dsdsd"
-        }
+        { "id": "mb005", "name": "Vikrant", "ign": "MBaapu" },
+        { "id": "mb006", "name": "Gaurav", "ign": "nhihorhakyamc" },
+        { "id": "mb007", "name": "Aanchal", "ign": "Basanti" },
+        { "id": "mb008", "name": "Parth", "ign": "AajaTeriMaartaHu" }
       ]
     }
   ],
-  "matches": [
-    {
-      "id": "mnmsuizq",
-      "mode": "team",
-      "prizePool": 3000,
-      "results": [
-        {
-          "place": 1,
-          "name": "smashers",
-          "teamId": "8qx890ee"
-        }
-      ],
-      "payouts": [
-        {
-          "place": 1,
-          "name": "smashers",
-          "teamId": "8qx890ee",
-          "captain": "gaurav",
-          "members": [
-            "aanchal",
-            "dsdsd"
-          ],
-          "amount": 3000,
-          "note": "Distributed by team captain"
-        }
-      ],
-      "timestamp": "2026-07-14T16:12:31.577Z"
-    }
-  ],
-  "liveAnnouncement": {
-    "id": "mnmsuizq",
-    "mode": "team",
-    "prizePool": 3000,
-    "results": [
-      {
-        "place": 1,
-        "name": "smashers",
-        "teamId": "8qx890ee"
-      }
-    ],
-    "payouts": [
-      {
-        "place": 1,
-        "name": "smashers",
-        "teamId": "8qx890ee",
-        "captain": "gaurav",
-        "members": [
-          "aanchal",
-          "dsdsd"
-        ],
-        "amount": 3000,
-        "note": "Distributed by team captain"
-      }
-    ],
-    "timestamp": "2026-07-14T16:12:31.577Z"
-  },
+  "matches": [],
   "joinLinks": {
-    "solo": "",
+    "solo": "https://smashkarts.io/link/?mode=67109640&wpns=159212&room=in227478&arena=skyarena-pinball&mdfrs=0",
     "team": "https://smashkarts.io/link/?mode=67109640&wpns=159212&room=in227478&arena=skyarena-pinball&mdfrs=0"
   }
 }
