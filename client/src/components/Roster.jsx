@@ -58,18 +58,12 @@ hover:border-cyan-400
 hover:shadow-[0_0_30px_rgba(0,229,255,.25)]
 "
               >
-<>
-  <span className="mr-3 text-cyan-300">
-    #{i + 1}
-  </span>
-
-  <span className="text-white group-hover:text-transparent group-hover:absolute">
-    {p.name}
-  </span>
-  <span className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-[60px] opacity-0 transition-all duration-300 group-hover:translate-x-[calc(100%-50px)] group-hover:opacity-100 text-purple-400 font-bold">
+  <span className="mr-3 text-cyan-300">#{i + 1}</span>
+  <span className="block transition-all duration-300 group-hover:opacity-0">{p.name}</span>
+  <span className="absolute inset-0 flex items-center justify-center text-purple-400 opacity-0 transition-all duration-300 group-hover:opacity-100">
     {p.ign}
   </span>
-</>              </motion.span>
+              </motion.span>
             ))}
           </div>
         ) : (
