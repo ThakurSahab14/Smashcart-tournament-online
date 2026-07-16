@@ -58,7 +58,7 @@ export default function Hero3D() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[78vh] min-h-[520px] overflow-hidden border-b border-white/5"
+      className="relative h-[85vh] min-h-[600px] overflow-hidden border-b border-white/5"
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
       onClick={handleTouch}
@@ -79,8 +79,8 @@ export default function Hero3D() {
         </Canvas>
       </motion.div>
 
-      {/* readable gradient so text sits comfortably over the 3D scene */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-asphalt via-transparent to-asphalt/40" />
+      {/* readable gradient so text sits comfortably over the 3D scene - lighter at bottom */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-asphalt via-transparent to-transparent" />
 
       <CinematicIntro onKartReveal={() => setKartRevealed(true)} onComplete={() => setIntroComplete(true)} />
 

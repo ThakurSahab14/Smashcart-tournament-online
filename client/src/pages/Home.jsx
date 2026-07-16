@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Hero3D from "../components/Hero3D.jsx";
+import TournamentInfo from "../components/TournamentInfo.jsx";
 import JoinBanner from "../components/JoinBanner.jsx";
 import ModeExplainer from "../components/ModeExplainer.jsx";
 import PrizePodium from "../components/PrizePodium.jsx";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <main>
       <Hero3D />
+      <TournamentInfo />
       <JoinBanner />
       <ModeExplainer />
       <PrizePodium />
