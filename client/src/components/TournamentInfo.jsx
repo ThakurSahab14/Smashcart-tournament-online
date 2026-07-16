@@ -87,15 +87,15 @@ export default function TournamentInfo() {
                 <motion.div whileHover={{ x: 6 }} className="flex items-center gap-3 rounded-lg bg-cyan-500/10 p-3 border border-cyan-400/20">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/30 text-sm font-bold text-cyan-300">1</span>
                   <div>
-                    <p className="text-white text-sm font-bold">3 Rounds</p>
-                    <p className="text-xs text-white/50">10 mins each • Sky Arena Pinball</p>
+                    <p className="text-white text-sm font-bold">1 Round</p>
+                    <p className="text-xs text-white/50">20 mins</p>
                   </div>
                 </motion.div>
                 <motion.div whileHover={{ x: 6 }} className="flex items-center gap-3 rounded-lg bg-cyan-500/10 p-3 border border-cyan-400/20">
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-500/30 text-sm font-bold text-cyan-300">2</span>
                   <div>
-                    <p className="text-white text-sm font-bold">Map: Sky Arena Pinball</p>
-                    <p className="text-xs text-white/50">Total ~30 mins</p>
+                    <p className="text-white text-sm font-bold">Map: Smash Island</p>
+                    <p className="text-xs text-white/50">Total ~25 mins</p>
                   </div>
                 </motion.div>
                 <motion.div whileHover={{ x: 6 }} className="flex items-center gap-3 rounded-lg bg-cyan-500/10 p-3 border border-cyan-400/20">

@@ -1,6 +1,7 @@
 {
   "mode": "team",
-  "prizePool": 2000,
+  "prizePool": 1000,
+  "soloPrizePool": 1000,
   "soloSplit": {
     "champion": 50,
     "second": 30,

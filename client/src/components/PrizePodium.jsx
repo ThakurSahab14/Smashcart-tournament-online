@@ -12,8 +12,10 @@ export default function PrizePodium() {
   const { state } = useTournament();
   if (!state) return null;
 
-  const pool = Number(state.prizePool) || 0;
   const isSolo = state.mode === "solo";
+  const pool = isSolo
+    ? (Number(state.soloPrizePool) || 0)
+    : (Number(state.prizePool) || 0);
   const split = state.soloSplit || { champion: 50, second: 30, third: 20 };
 
   const latestSoloMatch = state.matches?.find((m) => m.mode === "solo");

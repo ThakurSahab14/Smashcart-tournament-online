@@ -121,10 +121,13 @@ app.post("/api/mode", requireAdmin, (req, res) => {
 });
 
 app.post("/api/prizepool", requireAdmin, (req, res) => {
-  const { prizePool, soloSplit } = req.body;
+  const { prizePool, soloPrizePool, soloSplit } = req.body;
   const state = readState();
   if (typeof prizePool === "number" && prizePool >= 0) {
     state.prizePool = prizePool;
+  }
+  if (typeof soloPrizePool === "number" && soloPrizePool >= 0) {
+    state.soloPrizePool = soloPrizePool;
   }
   if (soloSplit) {
     const total =

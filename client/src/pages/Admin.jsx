@@ -101,6 +101,7 @@ export default function Admin() {
   const [notice, setNotice] = useState("");
 
   const [prizePool, setPrizePool] = useState(0);
+  const [soloPrizePool, setSoloPrizePool] = useState(0);
   const [split, setSplit] = useState({ champion: 50, second: 30, third: 20 });
   const [soloLink, setSoloLink] = useState("");
   const [teamLink, setTeamLink] = useState("");
@@ -124,6 +125,7 @@ export default function Admin() {
   useEffect(() => {
     if (currentState) {
       setPrizePool(currentState.prizePool);
+      setSoloPrizePool(currentState.soloPrizePool || 0);
       setSplit(currentState.soloSplit);
       setSoloLink(currentState.joinLinks?.solo || "");
       setTeamLink(currentState.joinLinks?.team || "");
@@ -152,7 +154,7 @@ export default function Admin() {
     const total = Number(split.champion) + Number(split.second) + Number(split.third);
     if (total !== 100) return flash("Solo split must add up to 100%");
     try {
-      await api.setPrizePool({ prizePool: Number(prizePool), soloSplit: split }, token);
+      await api.setPrizePool({ prizePool: Number(prizePool), soloPrizePool: Number(soloPrizePool), soloSplit: split }, token);
       flash("Prize pool updated");
     } catch (e) {
       flash(e.message);
@@ -272,15 +274,26 @@ export default function Admin() {
 
       <Section title="Prize pool" subtitle="Dynamic — update any time before or between races.">
         <form onSubmit={handlePrizeSubmit} className="space-y-4">
-          <Field label="Prize pool (₹)">
-            <input
-              type="number"
-              min="0"
-              value={prizePool}
-              onChange={(e) => setPrizePool(e.target.value)}
-              className={inputClass}
-            />
-          </Field>
+          <div className="grid grid-cols-2 gap-3">
+            <Field label="Team Prize (₹)">
+              <input
+                type="number"
+                min="0"
+                value={prizePool}
+                onChange={(e) => setPrizePool(e.target.value)}
+                className={inputClass}
+              />
+            </Field>
+            <Field label="Solo Prize (₹)">
+              <input
+                type="number"
+                min="0"
+                value={soloPrizePool}
+                onChange={(e) => setSoloPrizePool(e.target.value)}
+                className={inputClass}
+              />
+            </Field>
+          </div>
 
           {isSolo && (
             <div className="grid grid-cols-3 gap-3">
